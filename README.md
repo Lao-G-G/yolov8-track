@@ -10,4 +10,8 @@
 
 跟踪是只在推理时进行帧关联的，不需要训练。
 
-如果要使用BoT-SORT则运行`track_BoTSORT.py`，要使用ByteTrack则运行`track_ByteTrack.py`。
+如果要使用BoT-SORT则运行`track_BoTSORT.py`,要使用ByteTrack则运行`track_ByteTrack.py`.
+
+## 结果
+
+3080上分辨率384x640平均每帧用时: 1ms preprocess, 6ms inference, 1ms postprocess.
