@@ -54,10 +54,10 @@ def freeze_layer(trainer):
 
 
 
-# Create a new YOLO model from scratch
+# Create a new YOLO model from scratch (从头训练)
 model = YOLO('yolov8n.yaml')
 
-# Load a pretrained YOLO model (recommended for training)
+# Load a pretrained YOLO model (recommended for training)(使用预训练模型)
 model = YOLO('yolov8n.pt')
 
 model.add_callback("on_train_start", freeze_layer)
@@ -66,7 +66,11 @@ model.add_callback("on_train_start", freeze_layer)
 
 # Train the model using the 'coco128.yaml' dataset for 3 epochs
 #results = model.train(data='self.yaml', epochs=3, device=[0,1])
-results = model.train(data='self.yaml', epochs=100, device=[1])
+results = model.train(data='self.yaml',
+                      epochs=100,
+                      device=0,
+                      project='runs/detect',
+                      name='frozen_backbone',)
 
 # Evaluate the model's performance on the validation set
 results = model.val()
